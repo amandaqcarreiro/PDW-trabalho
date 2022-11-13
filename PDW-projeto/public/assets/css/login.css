@@ -1,0 +1,98 @@
+@import url(append.css);
+
+body {
+	background-color: var(--default-pink);
+	font-family: var(--default-font);
+}
+
+.header__balls {
+	background-color: #ecf6fc;
+	height: 4vh;
+	width: 100%;
+	padding: 0.3em 0.8em;
+	box-sizing: border-box;
+}
+
+.balls_container {
+	height: 100%;
+	aspect-ratio: 4/ 1;
+	display: flex;
+	justify-content: space-around;
+}
+
+.balls {
+	background-color: #FFFFFF;
+	height: 100%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+}
+
+
+
+.main-content {
+	padding: 4em 0 0 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+
+
+.main-title {
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 2em;
+	font-weight: 700;
+	margin: 0 0 1em 0;
+}
+
+.input {
+	padding: 0 0 0 1em;
+	color: #000000;
+}
+
+
+
+.input,
+.main__botao-submit,
+.main__botao-create {
+	margin: 2vh;
+	height: 10vh;
+	width: 30vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+.input::placeholder {
+	font-size: 1.5em;
+	display: flex;
+	align-items: center;
+	background-position: 2em;
+
+}
+
+.main__botao-submit,
+.main__botao-create {
+	font-size: 1.5em;
+	color: #FFFFFF;
+	border: none;
+}
+
+.main__botao-submit {
+	background-color: #A44CD3;
+}
+
+.main__botao-create {
+	background-color: #0044FF
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}

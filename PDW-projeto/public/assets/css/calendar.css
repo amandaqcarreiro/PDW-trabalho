@@ -1,0 +1,124 @@
+@import url(append.css);
+
+body {
+	font-family: var(--default-font);
+	background-color: #ecf6fc;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	border-collapse: collapse;
+
+}
+
+.header__balls {
+	background-color: #ecf6fc;
+	height: 4vh;
+	width: 100%;
+	padding: 0.3em 0.8em;
+	box-sizing: border-box;
+}
+
+.balls_container {
+	height: 100%;
+	aspect-ratio: 4/ 1;
+	display: flex;
+	justify-content: space-around;
+}
+
+.balls {
+	background-color: #FFFFFF;
+	height: 100%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+}
+
+header {
+	background-color: var(--default-pink);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 5vh;
+}
+
+.header__img {
+	height: 4vh;
+	margin-right: 1%;
+}
+
+.header__text {
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: 700;
+	font-size: 1.7em;
+}
+
+.main-content {
+	display: flex;
+	flex-direction: column;
+
+	align-items: center;
+	justify-content: flex-start;
+	background-color: #FFFFFF;
+	width: 95%;
+	min-height: 100vh;
+
+}
+
+.main__header {
+	width: 75vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 1em 0;
+}
+
+.main__header-img {
+	width: 2.5vw;
+}
+
+.food_element {
+	width: 75vw;
+	height: 7vh;
+	display: flex;
+	align-items: center;
+	margin: 0.5vw;
+	background-color: var(--secondary-pink);
+	border: 1px solid var(--default-pink);
+	color: var(--default-pink);
+	font-weight: 700;
+}
+
+.food_number {
+	background-color: var(--default-pink);
+	color: #FFFFFF;
+	font-size: 2em;
+	height: 100%;
+	aspect-ratio: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+}
+
+.food_name {
+	font-size: 1.5em;
+	margin-left: 1em;
+	color: var(--default-pink);
+	font-weight: 700;
+}
+
+body::-webkit-scrollbar {
+	width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+	background: var(--secondary-pink);
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: var(--default-pink);
+	border-radius: 20px;
+	border: 3px solid var(--secondary-pink);
+}
