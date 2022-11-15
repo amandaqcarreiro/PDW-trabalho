@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('rendimento');
-            $table->time('tempo_preparo');
+            $table->string('tempo_preparo');
             $table->string('modo_preparo');
         });
     }

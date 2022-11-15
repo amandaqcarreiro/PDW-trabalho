@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->integer('qntd');
-            $table->string('tipo_qntd');
-            $table->string('tipo_ingredients');
+            $table->string('qntd');
+            $table->string('tipo_ingrediente');
         });
     }
 
