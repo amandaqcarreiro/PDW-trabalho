@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Recipe;
+use App\Services\RecipeService;
 
 class RecipeController extends Controller
 {
@@ -13,9 +13,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Int $userId)
     {
-        return Recipe::all();
+        return RecipeService::all();
     }
 
     /**
