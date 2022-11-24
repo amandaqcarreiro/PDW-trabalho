@@ -18,7 +18,12 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return UserCalendar::where("id_user", Auth::id())->get();
+        return UserCalendar::where("id_user", Auth::id())
+                    ->get()
+                    ->map(function($weekday){
+                        $weekday->id_recipe=Recipe::find($weekday->id_recipe);
+                            return $weekday;
+                        });
     }
 
     /**
@@ -45,7 +50,10 @@ class CalendarController extends Controller
             "date"=> $request->date 
         ];
 
-        return UserCalendar::create($calendar);
+        $calendar = UserCalendar::create($calendar);
+        $calendar->id_recipe = Recipe::find($calendar->id_recipe);
+
+        return $calendar;
 
     }
 
@@ -62,7 +70,11 @@ class CalendarController extends Controller
         if (! $calendar || $calendar->id_user != Auth::id())
             return response(["messsage: Data sem registro, use POST"], 404);
 
-        $calendar->update($request->all());
+        $calendar->update($request->all())->map(function($weekday){
+            $weekday->id_recipe=Recipe::find($weekday->id_recipe);
+            return $weekday;
+        });
+
         return $calendar;
     }
 
@@ -90,11 +102,16 @@ class CalendarController extends Controller
         $first_day_of_week = date('Y-m-d', strtotime('Last Sunday', $time));
         $last_day_of_week = date('Y-m-d', strtotime('Next Saturday', $time));
 
-        return UserCalendar::whereBetween(
+        $calendar = UserCalendar::whereBetween(
             "date", [
                 $first_day_of_week,
                 $last_day_of_week
-            ])->get();
+            ])->get()->map(function($weekday){
+                $weekday->id_recipe=Recipe::find($weekday->id_recipe);
+                return $weekday;
+            });
+
+        return $calendar;
     }
 
 }
