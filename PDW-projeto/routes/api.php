@@ -16,11 +16,14 @@ use App\Http\Controllers\api\RecipeController;
 */
 
 
-Route::post("/users", [UserController::class, "store"]);
+Route::post("/users/create", [UserController::class, "store"]);
+Route::post("/users/login", [UserController::class, "login"]);
+
 
 Route::group(["middleware"=>["auth:sanctum"]], function(){
     Route::apiResource('/users/recipes', 'api\RecipeController');
-    Route::apiResource("/users/calendar", 'api\CalendarController');    
+    Route::apiResource("/users/calendar", 'api\CalendarController');
+    Route::post("/users/logout", [UserController::class, "logout"]);
 });
 
 Route::middleware('auth:sacntum')->get('/user', function(Request $req){

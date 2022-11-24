@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
@@ -30,40 +31,36 @@ class UserController extends Controller
             "password"=>bcrypt($request->password)
         ]);
 
-        $token = $user->createToken("registered")->plainTextToken();
+        $token = $user->createToken("registered")->plainTextToken;
 
-        return response($token, 201);
+        return response([
+            "user"=>$user,
+            "token"=>$token
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function login(Request $req){
+        $req->validate([
+            "email"=>"required|string",
+            "password"=>"required|string"
+        ]);
+
+        $user = User::where('email', $req->email)->first();
+        if(! $user || ! Hash::check($req->password, $user->password)){
+            return response(["message" => "Email ou senha invalido"], 401);
+        }
+
+        $token = $user->createToken("registered")->plainTextToken;
+
+        return response([
+            "user" => $user,
+            "token" => $token
+        ], 201);
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        auth()->user()->tokens()->delete();
+        return response(["message"=>"Logout bem sucedido"], 200);
     }
 }

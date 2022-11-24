@@ -1,0 +1,5 @@
+curl -X POST http://localhost:8000/api/users/create -F "name=kinder" -F "email=ferraz.alkindar@gmail.com" -F "password=123456" -F "password_confirmation=123456" -H "Accept: application/json" 
+
+curl -X POST http://localhost:8000/api/users/login -F "email=ferraz.alkindar@gmail.com" -F "password=123456"  -H "Accept: application/json" 
+
+curl -X POST http://localhost:8000/api/users/logout  -H "Accept: application/json" -H "Authorization: Bearer {token}"
