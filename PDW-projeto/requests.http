@@ -11,7 +11,7 @@ curl -X POST http://localhost:8000/api/users/login \
 
 ###
 @token = {{userCreate.response.body.$.token}}
-@userId = {{userCreate.response.body.$.user.id}}
+@token = {{login.response.body.$.token}}
 
 # @name logout
 curl -X POST http://localhost:8000/api/users/logout \
