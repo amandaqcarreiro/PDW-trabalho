@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\api\RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::post("/users", [UserController::class, "store"]);
+
 Route::group(["middleware"=>["auth:sanctum"]], function(){
-    Route::apiResource('/user/recipes', 'api\RecipeController');
-    Route::apiResource("/user/calendar", 'api\CalendarController');    
+    Route::apiResource('/users/recipes', 'api\RecipeController');
+    Route::apiResource("/users/calendar", 'api\CalendarController');    
 });
 
-Route::apiResource("/users", 'api\UserController');
 Route::middleware('auth:sacntum')->get('/user', function(Request $req){
     return $req->user();
 });

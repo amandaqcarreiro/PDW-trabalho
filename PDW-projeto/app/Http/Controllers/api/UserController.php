@@ -3,19 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -25,7 +18,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required|string",
+            "email"=>"required|string|unique:users,email",
+            "password"=>"required|string|confirmed"
+        ]);
+
+        $user = User::create([
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=>bcrypt($request->password)
+        ]);
+
+        $token = $user->createToken("registered")->plainTextToken();
+
+        return response($token, 201);
     }
 
     /**
@@ -41,8 +48,6 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
