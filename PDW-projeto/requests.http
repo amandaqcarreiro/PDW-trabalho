@@ -1,17 +1,18 @@
 # @name userCreate
+@token = {{userCreate.response.body.$.token}}
 curl -X POST http://localhost:8000/api/users/create \ 
 -d "name=kinder&email=ferraz.alkindar@gmail.com&password=123456&password_confirmation=123456" \
 -H "Accept: application/json"
 
+
 ###
 # @name login
+@token = {{login.response.body.$.token}}
 curl -X POST http://localhost:8000/api/users/login \ 
 -d "email=ferraz.alkindar@gmail.com&password=123456" \ 
 -H "Accept: application/json"
 
 ###
-@token = {{userCreate.response.body.$.token}}
-@token = {{login.response.body.$.token}}
 
 # @name logout
 curl -X POST http://localhost:8000/api/users/logout \
@@ -31,7 +32,7 @@ curl http://localhost:8000/api/recipes \
 curl -X POST http://localhost:8000/api/recipes \
 -H "Accept: application/json" \
 -H "Authorization: Bearer {{token}}" \
--d  "name=strogonoff&url=http://panelhinha"
+-d  "name=bolo de banana&url=http://paolacarossella.com"
 
 ###
 
@@ -68,7 +69,7 @@ curl -X GET http://localhost:8000/api/calendar \
 curl -X POST http://localhost:8000/api/week \
 -H "Accept: application/json" \
 -H "Authorization: Bearer {{token}}" \
--d "date_reference=2022-11-24"
+-d "date_reference=2022-11-14"
 
 ###
 # @name saveRecipeForDay
@@ -77,6 +78,15 @@ curl -X POST http://localhost:8000/api/calendar \
 -H "Accept: application/json" \
 -H "Authorization: Bearer {{token}}" \
 -d "id_recipe=1&date=2022-11-24T10:46:16.000Z"
+
+###
+# @name saveRecipeForDay2
+
+curl -X POST http://localhost:8000/api/calendar \
+-H "Accept: application/json" \
+-H "Authorization: Bearer {{token}}" \
+-d "id_recipe=2&date=2022-11-13T10:46:16.000Z"
+
 
 ###
 # @name updateRecipeForDay
