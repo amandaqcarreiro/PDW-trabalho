@@ -1,35 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use App\Models\Recipe;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
-class RecipeController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Response $res)
+    public function index()
     {
-        $user = Auth::id();
-        try {
-            $recipes = User::find($user)
-                        ->recipes()
-                        ->order_by("name")
-                        ->get();
-            return $res->setStatusCode(200)
-                        ->setContent($recipes);
-     
-        } catch (\Throwable $th) {
-            return $res->setStatusCode(404);
-        }
+        //
     }
 
     /**
@@ -40,7 +24,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -50,17 +34,6 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

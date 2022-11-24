@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
- //   return $request->user();
-//});
 
-Route::apiResource('recipes', 'api\RecipeController');
+Route::group(["middleware"=>["auth:sanctum"]], function(){
+    Route::apiResource('/user/recipes', 'api\RecipeController');
+    Route::apiResource("/user/calendar", 'api\CalendarController');    
+});
+
+Route::apiResource("/users", 'api\UserController');
+Route::middleware('auth:sacntum')->get('/user', function(Request $req){
+    return $req->user();
+});
