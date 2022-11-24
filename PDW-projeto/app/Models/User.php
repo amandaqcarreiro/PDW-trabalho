@@ -46,10 +46,10 @@ class User extends Authenticatable
 
     public function recipes()
     {
-        return $this->belongsToMany(Recipe::class, 'recipe_user');
+        return $this->belongsToMany(Recipe::class, 'id_user');
     }
 
-    public function Calendar()
+    public function calendar()
     {
         return $this->hasMany(UserCallendar::class);
     }

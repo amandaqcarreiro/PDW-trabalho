@@ -12,11 +12,12 @@ class Recipe extends Model
     protected $table='recipes';
     protected $fillable = [
         'name',
-        "url"
+        "url",
+        "id_user"
     ];
 
     public function users(){
-        return $this->belongsToMany(User::class, 'recipe_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function days(){

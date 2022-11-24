@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
+            $table->string('name');
             $table->string('url');
+            $table->integer('id_user')->unsigned();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->foreign("id_user")->references("id")->on("users")->onDelete("cascade");
         });
     }
 
