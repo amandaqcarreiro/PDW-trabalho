@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('id_user')->unsigned();
             $table->integer('id_recipe')->unsigned();
             $table->timestamp('date');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
             $table->foreign('id_recipe')->references('id')->on('recipes')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });

@@ -12,7 +12,13 @@ class UserCalendar extends Model
     protected $table='user_calendar';
 
     protected $fillable=[
+        "id_user",
+        "id_recipe",
         "date"
+    ];
+
+    protected $casts = [
+        'date' => 'datetime',
     ];
 
     public function recipe(){

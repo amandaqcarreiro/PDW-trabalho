@@ -23,4 +23,5 @@ Route::group(["middleware"=>["auth:sanctum"]], function(){
     Route::resource('/recipes', RecipeController::class);
     Route::resource("/calendar", CalendarController::class);
     Route::post("/users/logout", [UserController::class, "logout"]);
+    Route::post("/week", [CalendarController::class, "showForWeek"]);
 });
