@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\api\UserController;
-use App\Http\Controllers\api\RecipeController;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CalendarController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,13 +19,8 @@ use App\Http\Controllers\api\RecipeController;
 Route::post("/users/create", [UserController::class, "store"]);
 Route::post("/users/login", [UserController::class, "login"]);
 
-
 Route::group(["middleware"=>["auth:sanctum"]], function(){
-    Route::apiResource('/users/recipes', 'api\RecipeController');
-    Route::apiResource("/users/calendar", 'api\CalendarController');
+    Route::resource('/recipes', RecipeController::class);
+    Route::resource("/calendar", CalendarController::class);
     Route::post("/users/logout", [UserController::class, "logout"]);
-});
-
-Route::middleware('auth:sacntum')->get('/user', function(Request $req){
-    return $req->user();
 });
