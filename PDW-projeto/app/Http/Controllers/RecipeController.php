@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
@@ -16,12 +15,8 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return User::find(Auth::id())
-                        ->recipes()
-                        ->order_by("name")
-                        ->get();
+    public function index() {
+        return Recipe::where("id_user", Auth::id())->get();
     }
 
     /**
@@ -33,11 +28,17 @@ class RecipeController extends Controller
     public function store(Request $req)
     {
         $req->validate([
-            'name'=> "required", 
-            'url' => "required"
+            'name'=> "required|string", 
+            'url' => "required|string"
         ]);
 
-        return Recipe::create($req->all());
+        $recipe = [
+            "name" => $req->name,
+            "url" => $req->url,
+            "id_user"=>Auth::id()
+        ];
+
+        return Recipe::create($recipe);
     }
 
     /**
@@ -48,8 +49,11 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        return User::find(Auth::id())->recipes()
-                    ->where('id', $id)->get();
+        $recipe = Recipe::find($id);
+        if (! $recipe || $recipe->id_user != Auth::id())
+            return response(["messsage: Receita nao encontrada"], 404);
+
+        return $recipe;
     }
 
 
@@ -62,7 +66,10 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recipe = User::find(Auth::id())->recipes()->where('id', Auth::id())->get();
+        $recipe = Recipe::find($id);
+        if (! $recipe || $recipe->id_user != Auth::id())
+            return response(["messsage: Receita nao encontrada"], 404);
+
         $recipe->update($request->all());
         return $recipe;
     }
@@ -75,7 +82,10 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        $recipe = User::find(Auth::id())->recipes()->where('id',$id)->get();
-        return $recipe->destroy();
+        $recipe = Recipe::find($id);
+        if (! $recipe || $recipe->id_user != Auth::id())
+            return response(["messsage: Receita nao encontrada"], 404);
+
+        return response(Recipe::destroy($id), 200);
     }
 }
