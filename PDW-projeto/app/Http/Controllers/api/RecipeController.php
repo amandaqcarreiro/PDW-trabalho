@@ -16,20 +16,12 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Response $res)
+    public function index()
     {
-        $user = Auth::id();
-        try {
-            $recipes = User::find($user)
+        return User::find(Auth::id())
                         ->recipes()
                         ->order_by("name")
                         ->get();
-            return $res->setStatusCode(200)
-                        ->setContent($recipes);
-     
-        } catch (\Throwable $th) {
-            return $res->setStatusCode(404);
-        }
     }
 
     /**
@@ -38,9 +30,14 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        
+        $req->validate([
+            'name'=> "required", 
+            'url' => "required"
+        ]);
+
+        return Recipe::create($req->all());
     }
 
     /**
@@ -51,19 +48,10 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::find(Auth::id())->recipes()
+                    ->where('id', $id)->get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -74,7 +62,9 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recipe = User::find(Auth::id())->recipes()->where('id', Auth::id())->get();
+        $recipe->update($request->all());
+        return $recipe;
     }
 
     /**
@@ -85,6 +75,7 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipe = User::find(Auth::id())->recipes()->where('id',$id)->get();
+        return $recipe->destroy();
     }
 }
