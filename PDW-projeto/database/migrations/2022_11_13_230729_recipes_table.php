@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->string('rendimento');
-            $table->string('tempo_preparo');
-            $table->string('modo_preparo');
+            $table->string('url');
         });
     }
 

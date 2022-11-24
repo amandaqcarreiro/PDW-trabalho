@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Recipe::class, 'recipe_user');
     }
+
+    public function Calendar()
+    {
+        return $this->hasMany(UserCallendar::class);
+    }
 }

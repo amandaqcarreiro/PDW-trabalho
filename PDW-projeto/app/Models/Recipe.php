@@ -12,12 +12,15 @@ class Recipe extends Model
     protected $table='recipes';
     protected $fillable = [
         'name',
-        'rendimento',
-        'tempo_preparo',
-        'modo_preparo'
+        "url"
     ];
 
     public function users(){
         return $this->belongsToMany(User::class, 'recipe_user');
     }
+
+    public function days(){
+        return $this->belongsToMany(User::class);
+    }
+
 }

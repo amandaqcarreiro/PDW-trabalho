@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingredient_recipe', function (Blueprint $table) {
-            $table->integer('id_ingredient')->unsigned();      
+        Schema::create('user_calendar', function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('id_user')->unsigned();
             $table->integer('id_recipe')->unsigned();
-            $table->foreign('id_ingredient')->references('id')->on('ingredients')->onDelete('cascade');
+            $table->timestamp('date');
             $table->foreign('id_recipe')->references('id')->on('recipes')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredient_recipe');
+        Schema::dropIfExists("user_calendar");
     }
 };
