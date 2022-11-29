@@ -22,7 +22,7 @@ schema: pdw_trabalho
 
 2. Execute os seguintes comandos para criar as tabelas e rodar a aplicação:
 ```
-php artisan make:migration --fresh
+php artisan migrate:fresh
 php artisan serve
 ```
 
