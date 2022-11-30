@@ -5,19 +5,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/calendar.css') }}">
+	<link rel="stylesheet" href="/assets/css/reset.css">
+	<link rel="stylesheet" href="/assets/css/calendar.css">
 	<title>Calendário</title>
 </head>
 
 <body>
-	<div class="header__balls">
-		<div class="balls_container">
-			<div class="balls"></div>
-			<div class="balls"></div>
-			<div class="balls"></div>
-		</div>
-	</div>
 	<header>
 		<div></div>
 		<h1 class="header__text">Meu almoço</h1>

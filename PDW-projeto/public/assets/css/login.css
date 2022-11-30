@@ -1,33 +1,9 @@
 @import url(append.css);
 
 body {
-	background-color: var(--default-pink);
+	background-color: var(--default-bg);
 	font-family: var(--default-font);
 }
-
-.header__balls {
-	background-color: #ecf6fc;
-	height: 4vh;
-	width: 100%;
-	padding: 0.3em 0.8em;
-	box-sizing: border-box;
-}
-
-.balls_container {
-	height: 100%;
-	aspect-ratio: 4/ 1;
-	display: flex;
-	justify-content: space-around;
-}
-
-.balls {
-	background-color: #FFFFFF;
-	height: 100%;
-	aspect-ratio: 1;
-	border-radius: 50%;
-}
-
-
 
 .main-content {
 	padding: 4em 0 0 0;

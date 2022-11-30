@@ -11,30 +11,8 @@ body {
 
 }
 
-.header__balls {
-	background-color: #ecf6fc;
-	height: 4vh;
-	width: 100%;
-	padding: 0.3em 0.8em;
-	box-sizing: border-box;
-}
-
-.balls_container {
-	height: 100%;
-	aspect-ratio: 4/ 1;
-	display: flex;
-	justify-content: space-around;
-}
-
-.balls {
-	background-color: #FFFFFF;
-	height: 100%;
-	aspect-ratio: 1;
-	border-radius: 50%;
-}
-
 header {
-	background-color: var(--default-pink);
+	background-color: var(--default-bg);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -84,14 +62,14 @@ header {
 	display: flex;
 	align-items: center;
 	margin: 0.5vw;
-	background-color: var(--secondary-pink);
-	border: 1px solid var(--default-pink);
-	color: var(--default-pink);
+	background-color: var(--secondary-bg);
+	border: 1px solid var(--default-bg);
+	color: var(--default-bg);
 	font-weight: 700;
 }
 
 .food_number {
-	background-color: var(--default-pink);
+	background-color: var(--default-bg);
 	color: #FFFFFF;
 	font-size: 2em;
 	height: 100%;
@@ -105,7 +83,7 @@ header {
 .food_name {
 	font-size: 1.5em;
 	margin-left: 1em;
-	color: var(--default-pink);
+	color: var(--default-bg);
 	font-weight: 700;
 }
 
@@ -114,11 +92,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-	background: var(--secondary-pink);
+	background: var(--secondary-bg);
 }
 
 body::-webkit-scrollbar-thumb {
-	background-color: var(--default-pink);
+	background-color: var(--default-bg);
 	border-radius: 20px;
-	border: 3px solid var(--secondary-pink);
+	border: 3px solid var(--secondary-bg);
 }

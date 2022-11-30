@@ -17,6 +17,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function create(){
+        return view('user.create_userr');
+    }
+    public function loginPage(){
+        return view('user.loginn');
+    }
+    public function calendarPage(){
+        return view('user.calendar');
+    }
     public function store(Request $request)
     {
         $request->validate([

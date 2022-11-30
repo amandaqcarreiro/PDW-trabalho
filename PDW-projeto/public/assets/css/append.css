@@ -1,5 +1,5 @@
 :root {
 	--default-font: Arial, Helvetica, sans-serif;
-	--default-pink: rgb(201, 26, 128);
-	--secondary-pink: rgba(201, 26, 128, 0.3);
+	--default-bg: #282a36;
+	--secondary-bg: #44475a;
 }

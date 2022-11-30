@@ -33,3 +33,7 @@ Recomendamos instalar a extensão
 para visual-studio que permite interagir com eles de forma mais automatizada.
 A request de login, por exemplo, seta uma variável de ambiente com o token que é
 usada nas demais requests.
+
+
+composer require laravel/sanctum
+

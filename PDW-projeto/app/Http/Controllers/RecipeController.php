@@ -51,7 +51,7 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::find($id);
         if (! $recipe || $recipe->id_user != Auth::id())
-            return response(["messsage: Receita nao encontrada"], 404);
+            return response(["message: Receita nao encontrada"], 404);
 
         return $recipe;
     }
