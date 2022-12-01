@@ -12,13 +12,14 @@
 
 <body>
 	<main class="main-content">
+	<h1 class="main-title">Meu Almoço</h1>
 		<form class="form" method="POST" action="{{ route('calendar')}}">
-			<h1 class="main-title">Meu Almoço</h1>
+			@csrf
 			<input id='email' type="email" name="email" class="input usuario" placeholder="E-mail"></input>
 			<input id='pass' type="password" name="password" class="input senha" placeholder="Senha"></input>
-			<button id='submit' type="submit" href="" class="main__botao-submit">Login</button>
-			<a href="create_user.html" class="main__botao-create">Criar usuário</a>
+			<button id='submit' type="submit" class="main__botao-submit">Login</button>
 		</form>
+		<button class="main__botao-create" onclick="window.location='{{ route("create_user") }}'" >Criar usuário</button>
 	</main>
 </body>
 

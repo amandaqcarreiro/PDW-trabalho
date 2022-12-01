@@ -17,7 +17,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(){
+    public function createPage(){
         return view('user.create_userr');
     }
     public function loginPage(){
@@ -26,6 +26,11 @@ class UserController extends Controller
     public function calendarPage(){
         return view('user.calendar');
     }
+    public function welcomePage(){
+        return view('welcome');
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -61,10 +66,14 @@ class UserController extends Controller
 
         $token = $user->createToken("registered")->plainTextToken;
 
-        return response([
-            "user" => $user,
-            "token" => $token
-        ], 201);
+        // return response([
+        //     "user" => $user,
+        //     "token" => $token
+        // ], 201);
+
+        return redirect()->intended('welcome');
+
+
     }
 
     public function logout()

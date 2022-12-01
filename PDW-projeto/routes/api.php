@@ -18,6 +18,9 @@ use App\Http\Controllers\CalendarController;
 
 Route::post("/user/create", [UserController::class, "store"]);
 Route::post("/user/login", [UserController::class, "login"]) -> name('calendar');
+#Route::post("/user/login", [LoginController::class, "authenticate"]) -> name('calendar');
+
+
 
 Route::group(["middleware"=>["auth:sanctum"]], function(){
     Route::resource('/recipes', RecipeController::class);

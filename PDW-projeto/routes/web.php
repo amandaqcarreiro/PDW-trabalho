@@ -15,12 +15,13 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})  -> name('welcome');
 
 Route::get('/user/create_user', [UserController::class, 'create']);
 Route::post('/user/create_user', [UserController::class, 'store']) -> name('register_user');
-//Route::post("/users/login", [UserController::class, "login"]);
+//Route::post("/users/login", [UserController::class, "login"]); -> name('login');
 
 //Pages
-Route::get('/user/login', [UserController::class, 'loginPage']);
-#Route::get('/user/calendar', [UserController::class, 'calendarPage']) ;
+Route::get('/user/login', [UserController::class, 'loginPage']) -> name('login');
+
+Route::get('/user/create', [UserController::class, 'createPage']) -> name('create_user');
